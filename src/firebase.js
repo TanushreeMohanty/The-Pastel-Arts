@@ -3,7 +3,6 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
   apiKey: "AIzaSyCjzVnXUxBxd6HYH0GC7bNgR5tDr-joMGI",
   authDomain: "the-pastel-arts.firebaseapp.com",
   projectId: "the-pastel-arts",

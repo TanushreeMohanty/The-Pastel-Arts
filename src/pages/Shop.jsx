@@ -2,81 +2,70 @@ import React, { useState } from "react";
 import { products } from "../data/products";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import "./Shop.css";
 
 const Shop = () => {
-  const [qty, setQty] = useState({});
+  const [qty, setQty] = useState(() =>
+    products.reduce((acc, product) => {
+      acc[product.id] = 1; // default qty = 1
+      return acc;
+    }, {})
+  );
+
   const navigate = useNavigate();
-  const { cart, addToCart, updateCartQty, removeFromCart, totalPrice } = useCart();
+  const { addToCart } = useCart();
+
+  const handleQtyChange = (productId, delta) => {
+    setQty((prev) => ({
+      ...prev,
+      [productId]: Math.max((prev[productId] || 1) + delta, 1),
+    }));
+  };
 
   return (
-    <div className="container my-4">
-      <h2 className="mb-4 text-center">Shop</h2>
-      <div className="row">
-        {products.map(product => (
-          <div key={product.id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div className="card h-100 shadow-sm">
-              <img src={product.image} className="card-img-top" alt={product.name} />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{product.name}</h5>
-                <p className="card-text">{product.description}</p>
-                <p className="card-text fw-bold">₹{product.price}</p>
+    <div className="shop-container">
+      <h2 className="shop-title">🛍️ Shop Our Pastel Collection</h2>
 
-                <div className="d-flex mb-2 align-items-center gap-2">
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => setQty({ ...qty, [product.id]: Math.max((qty[product.id] || 1) - 1, 1) })}
-                  >-</button>
-                  <span>{qty[product.id] || 1}</span>
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => setQty({ ...qty, [product.id]: (qty[product.id] || 1) + 1 })}
-                  >+</button>
-                </div>
+      <div className="products-grid">
+        {products.map((product) => (
+          <div key={product.id} className="product-card">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="product-img"
+            />
 
+            <div className="product-info">
+              <h5 className="product-name">{product.name}</h5>
+              <p className="product-desc">{product.description}</p>
+              <p className="product-price">₹{product.price}</p>
+
+              <div className="quantity-controls">
                 <button
-                  className="btn btn-primary mt-auto"
-                  onClick={() => addToCart(product, qty[product.id] || 1)}
+                  className="qty-btn"
+                  onClick={() => handleQtyChange(product.id, -1)}
                 >
-                  Add to Cart
+                  -
+                </button>
+                <span className="qty-value">{qty[product.id]}</span>
+                <button
+                  className="qty-btn"
+                  onClick={() => handleQtyChange(product.id, 1)}
+                >
+                  +
                 </button>
               </div>
+
+              <button
+                className="add-cart-btn"
+                onClick={() => addToCart(product, qty[product.id])}
+              >
+                Add to Cart 🛒
+              </button>
             </div>
           </div>
         ))}
       </div>
-
-      <h3 className="mt-5">Cart</h3>
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <>
-          <ul className="list-group mb-3">
-            {cart.map(item => (
-              <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                <div className="d-flex align-items-center gap-2">
-                  <span>{item.name}</span>
-                  <div className="d-flex align-items-center gap-1">
-                    <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, -1)}>-</button>
-                    <span>{item.qty}</span>
-                    <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, 1)}>+</button>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center gap-2">
-                  <span>₹{item.price * item.qty}</span>
-                  <button className="btn btn-danger btn-sm" onClick={() => removeFromCart(item.id)}>Remove</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="d-flex justify-content-end mt-3">
-            <button className="btn btn-success" onClick={() => navigate('/checkout')}>
-              Proceed to Checkout
-            </button>
-          </div>
-          <p className="fw-bold mt-3">Total: ₹{totalPrice}</p>
-        </>
-      )}
     </div>
   );
 };
