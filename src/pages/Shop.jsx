@@ -1,37 +1,12 @@
 import React, { useState } from "react";
 import { products } from "../data/products";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const Shop = () => {
-  const [cart, setCart] = useState([]);
-  const [qty, setQty] = useState({}); // quantity for each product
-
-  // Add product to cart
-  const addToCart = (product, quantity) => {
-    const exists = cart.find(item => item.id === product.id);
-    if (exists) {
-      setCart(cart.map(item =>
-        item.id === product.id ? { ...item, qty: item.qty + quantity } : item
-      ));
-    } else {
-      setCart([...cart, { ...product, qty: quantity }]);
-    }
-  };
-
-  // Update quantity in cart
-  const updateCartQty = (productId, change) => {
-    setCart(cart.map(item => {
-      if (item.id === productId) {
-        const newQty = item.qty + change;
-        return { ...item, qty: newQty > 0 ? newQty : 1 };
-      }
-      return item;
-    }));
-  };
-
-  // Remove item from cart
-  const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
-  };
+  const [qty, setQty] = useState({});
+  const navigate = useNavigate();
+  const { cart, addToCart, updateCartQty, removeFromCart, totalPrice } = useCart();
 
   return (
     <div className="container my-4">
@@ -46,7 +21,6 @@ const Shop = () => {
                 <p className="card-text">{product.description}</p>
                 <p className="card-text fw-bold">₹{product.price}</p>
 
-                {/* Quantity Selector with + / - */}
                 <div className="d-flex mb-2 align-items-center gap-2">
                   <button
                     className="btn btn-secondary"
@@ -71,30 +45,38 @@ const Shop = () => {
         ))}
       </div>
 
-      {/* Cart Section */}
       <h3 className="mt-5">Cart</h3>
-      {cart.length === 0 && <p>Your cart is empty</p>}
-      {cart.length > 0 && (
-        <ul className="list-group mb-3">
-          {cart.map(item => (
-            <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <div className="d-flex align-items-center gap-2">
-                <span>{item.name}</span>
-                <div className="d-flex align-items-center gap-1">
-                  <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, -1)}>-</button>
-                  <span>{item.qty}</span>
-                  <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, 1)}>+</button>
+      {cart.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <>
+          <ul className="list-group mb-3">
+            {cart.map(item => (
+              <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <div className="d-flex align-items-center gap-2">
+                  <span>{item.name}</span>
+                  <div className="d-flex align-items-center gap-1">
+                    <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, -1)}>-</button>
+                    <span>{item.qty}</span>
+                    <button className="btn btn-secondary btn-sm" onClick={() => updateCartQty(item.id, 1)}>+</button>
+                  </div>
                 </div>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <span>₹{item.price * item.qty}</span>
-                <button className="btn btn-danger btn-sm" onClick={() => removeFromCart(item.id)}>Remove</button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="d-flex align-items-center gap-2">
+                  <span>₹{item.price * item.qty}</span>
+                  <button className="btn btn-danger btn-sm" onClick={() => removeFromCart(item.id)}>Remove</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="d-flex justify-content-end mt-3">
+            <button className="btn btn-success" onClick={() => navigate('/checkout')}>
+              Proceed to Checkout
+            </button>
+          </div>
+          <p className="fw-bold mt-3">Total: ₹{totalPrice}</p>
+        </>
       )}
-      <p className="fw-bold">Total: ₹{cart.reduce((acc, item) => acc + item.price * item.qty, 0)}</p>
     </div>
   );
 };
