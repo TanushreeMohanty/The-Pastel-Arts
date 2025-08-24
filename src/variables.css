@@ -1,0 +1,12 @@
+/* variables.css */
+:root {
+  --color-primary: #874CCC;    /* Deep Purple */
+  --color-secondary: #fb6090;  /* Soft Pink */
+  --color-accent: #10439F;     /* Rich Blue */
+  --color-bg: #F9F9F9;         /* Light Background */
+  --color-card-bg: #FFFFFF;     /* Card Background */
+  --color-text: #333333;        /* Primary text */
+  --color-text-light: #555555;  /* Secondary text */
+  --color-btn-hover: #F27BBD;   /* Button hover */
+  --color-border: #DDDDDD;      /* Borders and separators */
+}

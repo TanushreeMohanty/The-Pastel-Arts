@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, provider } from "../firebase"; 
+import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useCart } from "../context/CartContext";
 import "./Navbar.css"; // custom styles
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
-  const { cartCount } = useCart(); // 👈 use cartCount directly
+  const { cartCount } = useCart();
 
   const handleLogin = async () => {
     try {
@@ -27,7 +27,7 @@ const Navbar = ({ user, setUser }) => {
   const isAdmin = user?.email === "admin@example.com";
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm custom-navbar">
+    <nav className="navbar navbar-expand-lg navbar-light shadow-sm custom-navbar fixed-top">
       <div className="container">
         {/* Brand with Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -49,7 +49,10 @@ const Navbar = ({ user, setUser }) => {
         </button>
 
         {/* Nav items */}
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
           <ul className="navbar-nav align-items-center nav-animate">
             <li className="nav-item">
               <Link className="nav-link" to="/">
@@ -59,6 +62,16 @@ const Navbar = ({ user, setUser }) => {
             <li className="nav-item">
               <Link className="nav-link" to="/shop">
                 <i className="bi bi-bag-check me-1"></i> Shop
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                <i className="bi bi-info-circle me-1"></i> About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">
+                <i className="bi bi-envelope me-1"></i> Contact Us
               </Link>
             </li>
             {isAdmin && (
@@ -72,7 +85,7 @@ const Navbar = ({ user, setUser }) => {
             {/* Cart Button */}
             <li className="nav-item mx-2">
               <button
-                className="btn btn-outline-success position-relative d-flex align-items-center nav-btn"
+                className="nav-btn position-relative d-flex align-items-center"
                 onClick={() => navigate("/cart")}
               >
                 <i className="bi bi-cart-fill me-1"></i> Cart

@@ -5,7 +5,6 @@
   max-width: 1200px;
   margin: auto;
   min-height: 85vh;
-  background: linear-gradient(135deg, #ffc5d0, #f7d6d0);
   border-radius: 20px;
 }
 
@@ -29,16 +28,16 @@
 /* Cards */
 .checkout-form,
 .order-summary {
-  background: #fff;
+  background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
 }
 
 .checkout-form:hover,
 .order-summary:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .checkout-form h4,
@@ -65,13 +64,13 @@ textarea {
 .form-select:focus,
 textarea:focus {
   outline: none;
-  border: 1px solid #fb6090; /* hot pink */
-  box-shadow: 0 0 6px rgba(251, 96, 144, 0.4);
+  border: 1px solid #fb6090;
+  box-shadow: 0 0 6px rgba(251, 96, 144, 0.2);
 }
 
 /* Place Order Button */
 .place-order-btn {
-  background: linear-gradient(135deg, #fb6090, #821d30); /* hot pink to deep rose */
+  background-color: #fb6090; /* solid hot pink */
   color: #fff;
   border: none;
   padding: 0.9rem 1.8rem;
@@ -84,7 +83,7 @@ textarea:focus {
 }
 
 .place-order-btn:hover {
-  background: linear-gradient(135deg, #821d30, #fb6090); /* hover gradient */
+  background-color: #821d30; /* darker pink on hover */
   transform: scale(1.05);
 }
 
@@ -94,7 +93,6 @@ textarea:focus {
   flex-direction: column;
   padding: 1.2rem;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   max-height: 350px;
   overflow-y: auto;
   width: 100%; 
@@ -104,7 +102,7 @@ textarea:focus {
   margin-bottom: 0.8rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #821d30; /* deep rose red */
+  color: #821d30;
   text-align: center;
 }
 
@@ -131,7 +129,7 @@ textarea:focus {
 
 .cart-item.total {
   font-weight: bold;
-  color: #fb6090; /* hot pink for totals */
+  color: #fb6090;
   font-size: 1rem;
   padding-top: 0.6rem;
   border-top: 2px solid #ddd;
@@ -142,24 +140,21 @@ textarea:focus {
 .thank-you {
   text-align: center;
   padding: 5rem 2rem;
-  border-radius: 20px;
   color: #333;
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 .thank-you h2 {
   margin-bottom: 1rem;
-  color: #fb6090; /* hot pink */
+  color: #fb6090;
 }
 
 .thank-you span {
-  color: #821d30; /* deep rose red */
+  color: #821d30;
 }
 
 .back-home-btn {
   margin-top: 1.5rem;
-  background: linear-gradient(135deg, #fb6090, #821d30); /* gradient palette */
+  background-color: #fb6090;
   color: #fff;
   border: none;
   padding: 0.8rem 1.6rem;
@@ -170,7 +165,7 @@ textarea:focus {
 }
 
 .back-home-btn:hover {
-  background: linear-gradient(135deg, #821d30, #fb6090); /* hover gradient */
+  background-color: #821d30;
   transform: scale(1.05);
 }
 

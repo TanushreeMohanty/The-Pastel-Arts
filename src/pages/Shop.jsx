@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 import "./Shop.css";
 
 const Shop = () => {
-  const [qty, setQty] = useState(() =>
+  const [qty, setQty] = useState(
     products.reduce((acc, product) => {
       acc[product.id] = 1;
       return acc;
@@ -13,6 +13,9 @@ const Shop = () => {
   );
 
   const [activeCategory, setActiveCategory] = useState("All");
+  const [wishlist, setWishlist] = useState([]);
+  const [view, setView] = useState("grid"); // 'grid' or 'list'
+
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
@@ -21,6 +24,14 @@ const Shop = () => {
       ...prev,
       [productId]: Math.max((prev[productId] || 1) + delta, 1),
     }));
+  };
+
+  const toggleWishlist = (productId) => {
+    setWishlist((prev) =>
+      prev.includes(productId)
+        ? prev.filter((id) => id !== productId)
+        : [...prev, productId]
+    );
   };
 
   const categories = ["All", "Diary", "Pen", "Pencil"];
@@ -34,23 +45,40 @@ const Shop = () => {
 
   return (
     <div className="shop-container">
-      <h2 className="shop-title">Shop Our Pastel Collection</h2>
+      <h2 className="shop-title pt-5">Shop Our Pastel Collection</h2>
 
-      {/* Category Tabs */}
-      <div className="category-tabs">
-        {categories.map((cat) => (
+      {/* Filters */}
+      <div className="filters-container">
+        <div className="category-tabs">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`tab-btn ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="view-toggle">
           <button
-            key={cat}
-            className={`tab-btn ${activeCategory === cat ? "active" : ""}`}
-            onClick={() => setActiveCategory(cat)}
+            className={view === "grid" ? "active" : ""}
+            onClick={() => setView("grid")}
           >
-            {cat}
+            Grid
           </button>
-        ))}
+          <button
+            className={view === "list" ? "active" : ""}
+            onClick={() => setView("list")}
+          >
+            List
+          </button>
+        </div>
       </div>
 
       {/* Products Grid */}
-      <div className="products-grid">
+      <div className={`products-grid ${view}`}>
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div key={product.id} className="product-card">
@@ -60,6 +88,14 @@ const Shop = () => {
                   alt={product.name}
                   className="product-img"
                 />
+                <span
+                  className={`wishlist-heart ${
+                    wishlist.includes(product.id) ? "active" : ""
+                  }`}
+                  onClick={() => toggleWishlist(product.id)}
+                >
+                  ♥
+                </span>
               </div>
 
               <div className="product-info">

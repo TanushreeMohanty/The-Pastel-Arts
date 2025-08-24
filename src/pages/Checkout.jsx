@@ -66,7 +66,7 @@ await addDoc(collection(db, "orders"), {
 
   if (orderPlaced) {
     return (
-      <div className="checkout-container thank-you">
+      <div className="checkout-container thank-you mt-5">
         <h2>🎉 Thank you for shopping at <span>The Pastel Arts</span>!</h2>
         <p>Your order has been placed successfully 💖</p>
         <button className="back-home-btn" onClick={() => navigate("/")}>
@@ -77,7 +77,7 @@ await addDoc(collection(db, "orders"), {
   }
 
   return (
-    <div className="checkout-container">
+    <div className="checkout-container mt-5">
       <h2 className="checkout-title">Secure Checkout 🛒</h2>
       <div className="checkout-grid">
 
