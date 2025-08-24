@@ -46,15 +46,16 @@ useEffect(() => {
     }
 
     try {
-      await addDoc(collection(db, "orders"), {
-        user,
-        cart,
-        address,
-        phone,
-        paymentMethod,
-        totalPrice,
-        createdAt: new Date()
-      });
+await addDoc(collection(db, "orders"), {
+  user,
+  cart,
+  address,
+  phone,
+  paymentMethod,
+  total: cartTotal,  // ✅ Use the correct variable
+  createdAt: new Date()
+});
+
       setOrderPlaced(true);
       clearCart();
     } catch (error) {
