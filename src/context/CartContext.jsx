@@ -1,94 +1,93 @@
-// src/context/CartContext.jsx
-import React, { createContext, useState, useEffect, useContext } from "react";
-import { db } from "../firebase";
-import { doc, setDoc, onSnapshot } from "firebase/firestore";
+// context/CartContext.js
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { db } from "../firebase"; 
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useAuth } from "../context/AuthContext"; // assumes you have auth context
 
-export const CartContext = createContext();
+const CartContext = createContext();
 
-export const CartProvider = ({ children, user }) => {
+export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const { currentUser } = useAuth(); // get logged-in user
 
-  // 🔹 Realtime sync with Firestore
-  useEffect(() => {
-    if (!user?.uid) {
-      setCart([]);
-      return;
-    }
-
-    const cartRef = doc(db, "carts", user.uid);
-
-    const unsubscribe = onSnapshot(
-      cartRef,
-      (docSnap) => {
+  // 🔹 Load cart from Firestore on login
+useEffect(() => {
+  const fetchCart = async () => {
+    if (currentUser) {
+      try {
+        const cartRef = doc(db, "carts", currentUser.uid);
+        const docSnap = await getDoc(cartRef);
         if (docSnap.exists()) {
           setCart(docSnap.data().items || []);
-        } else {
-          // initialize empty cart if not exists
-          setDoc(cartRef, { items: [] }).catch((err) =>
-            console.error("Error initializing cart:", err)
-          );
         }
-      },
-      (error) => {
-        console.error("Firestore snapshot error:", error);
+      } catch (err) {
+        console.error("Error fetching cart:", err);
       }
-    );
-
-    return () => unsubscribe();
-  }, [user]);
-
-  // 🔹 Update Firestore helper
-  const updateCartInFirestore = async (newCart) => {
-    if (!user?.uid) return;
-    const cartRef = doc(db, "carts", user.uid);
-    try {
-      await setDoc(cartRef, { items: newCart }, { merge: true });
-    } catch (err) {
-      console.error("Error updating cart in Firestore:", err);
+    } else {
+      setCart([]);
     }
   };
+  fetchCart();
+}, [currentUser]);
 
-  // 🔹 Cart functions
-  const addToCart = (product) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      let updatedCart;
+  // 🔹 Save cart to Firestore whenever it changes
+  useEffect(() => {
+    const saveCart = async () => {
+      if (currentUser) {
+        const cartRef = doc(db, "carts", currentUser.uid);
+        await setDoc(cartRef, { items: cart }, { merge: true });
+      }
+    };
+    if (currentUser) saveCart();
+  }, [cart, currentUser]);
+
+  const addToCart = (product, quantity = 1) => {
+    const qty = Number(quantity) || 1;
+    setCart((prevCart) => {
+      const existing = prevCart.find((item) => item.id === product.id);
       if (existing) {
-        updatedCart = prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + qty }
+            : item
         );
       } else {
-        updatedCart = [...prev, { ...product, qty: 1 }];
+        return [...prevCart, { ...product, quantity: qty }];
       }
-      updateCartInFirestore(updatedCart);
-      return updatedCart;
     });
   };
 
   const removeFromCart = (id) => {
-    setCart((prev) => {
-      const updatedCart = prev.filter((item) => item.id !== id);
-      updateCartInFirestore(updatedCart);
-      return updatedCart;
-    });
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  const updateQty = (id, qty) => {
-    setCart((prev) => {
-      const updatedCart = prev.map((item) =>
-        item.id === id ? { ...item, qty: Math.max(qty, 1) } : item
-      );
-      updateCartInFirestore(updatedCart);
-      return updatedCart;
-    });
-  };
+  const updateQty = (id, newQty) => {
+  setCart((prevCart) =>
+    prevCart.map((item) =>
+      item.id === id ? { ...item, quantity: newQty } : item
+    )
+  );
+};
+
+  const clearCart = () => setCart([]);
+
+  
+  // ✅ Helper: total items
+  const cartCount = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+
+  // ✅ Helper: total price
+  const cartTotal = cart.reduce(
+    (total, item) => total + (item.price * (item.quantity || 0)),
+    0
+  );
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty }}>
+<CartContext.Provider
+  value={{ cart, addToCart, removeFromCart, clearCart, updateQty, cartCount, cartTotal }}
+>
       {children}
     </CartContext.Provider>
   );
 };
 
-// ✅ Custom hook
 export const useCart = () => useContext(CartContext);

@@ -8,13 +8,14 @@ import Cart from "./pages/Cart";
 import AdminPage from "./pages/AdminPage";
 import { auth } from "./firebase";
 import { CartProvider } from "./context/CartContext";
+import { onAuthStateChanged } from "firebase/auth"; // ✅ import correctly
 
 function App() {
   const [user, setUser] = useState(null);
 
   // Listen to auth state changes
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
     return () => unsubscribe();

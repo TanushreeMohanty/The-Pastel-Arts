@@ -7,7 +7,7 @@ import "./Navbar.css"; // custom styles
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { cartCount } = useCart(); // 👈 use cartCount directly
 
   const handleLogin = async () => {
     try {
@@ -31,11 +31,7 @@ const Navbar = ({ user, setUser }) => {
       <div className="container">
         {/* Brand with Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img 
-            src="/logo.png" 
-            alt="Logo" 
-            className="brand-logo me-2"
-          />
+          <img src="/logo.png" alt="Logo" className="brand-logo me-2" />
           <span className="fw-bold brand-text">The Pastel Arts</span>
         </Link>
 
@@ -74,20 +70,19 @@ const Navbar = ({ user, setUser }) => {
             )}
 
             {/* Cart Button */}
-<li className="nav-item mx-2">
-  <button
-    className="btn btn-outline-success position-relative d-flex align-items-center nav-btn"
-    onClick={() => navigate("/cart")}
-  >
-    <i className="bi bi-cart-fill me-1"></i> Cart
-    {cart.length > 0 && (
-      <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
-        {cart.reduce((total, item) => total + item.qty, 0)}
-      </span>
-    )}
-  </button>
-</li>
-
+            <li className="nav-item mx-2">
+              <button
+                className="btn btn-outline-success position-relative d-flex align-items-center nav-btn"
+                onClick={() => navigate("/cart")}
+              >
+                <i className="bi bi-cart-fill me-1"></i> Cart
+                {cartCount > 0 && (
+                  <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+            </li>
 
             {/* User/Login */}
             {user ? (

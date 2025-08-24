@@ -19,7 +19,7 @@ const Cart = () => {
   };
 
   // 🔹 Calculate total
-  const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <div className="cart-container">
@@ -36,9 +36,9 @@ const Cart = () => {
                   <h3>{item.name}</h3>
                   <p>₹{item.price}</p>
                   <div className="cart-actions">
-                    <button onClick={() => decreaseQty(item.id, item.qty)}>-</button>
-                    <span>{item.qty}</span>
-                    <button onClick={() => increaseQty(item.id, item.qty)}>+</button>
+                    <button onClick={() => decreaseQty(item.id, item.quantity)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => increaseQty(item.id, item.quantity)}>+</button>
                   </div>
                   <button
                     className="remove-btn"

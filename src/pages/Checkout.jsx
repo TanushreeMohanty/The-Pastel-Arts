@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react"; 
 import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { app } from "../firebase";
 import { useCart } from "../context/CartContext";
 import "./Checkout.css";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Checkout = () => {
   const auth = getAuth();
   const db = getFirestore(app);
   const navigate = useNavigate();
-  const { cart, clearCart, totalPrice } = useCart();
+const { cart, clearCart, cartTotal } = useCart();
 
   const [user, setUser] = useState({ name: "", email: "" });
   const [address, setAddress] = useState("");
@@ -18,14 +18,21 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("COD");
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  useEffect(() => {
-    const currentUser = auth.currentUser;
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      setUser({ name: currentUser.displayName || "", email: currentUser.email || "" });
+      setUser({
+        name: currentUser.displayName || "",
+        email: currentUser.email || "",
+      });
     } else {
-      navigate("/"); // redirect if not logged in
+      navigate("/"); // redirect only after Firebase confirms no user
     }
-  }, [auth, navigate]);
+  });
+
+  return () => unsubscribe();
+}, [auth, navigate]);
+
 
   const handleOrder = async () => {
     if (!address.trim() || !phone.trim()) {
@@ -92,7 +99,7 @@ const Checkout = () => {
       <li className="cart-item total">
         <span>Total</span>
         {/* ✅ Use totalPrice from CartContext */}
-        <span>₹{totalPrice}</span>
+<span>₹{cartTotal}</span>
       </li>
     </ul>
   )}
