@@ -1,37 +1,40 @@
-/* Brand Logo */
+/* Navbar base */
+.custom-navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Brand */
 .brand-logo {
-  height: 35px;
-  width: 35px;
+  height: 36px;
+  width: 36px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
-
 .brand-logo:hover {
-  transform: rotate(10deg) scale(1.1);
+  transform: scale(1.1);
 }
-
 .brand-text {
-  font-size: 1.25rem;
-  color: #4b2e83;
+  font-size: 1.3rem;
+  color: #222;
   transition: color 0.3s ease;
 }
-
 .brand-text:hover {
-  color: #6a4fbf;
+  color: #007bff;
 }
 
-/* Nav link hover animation */
+/* Links */
 .nav-animate .nav-link {
   position: relative;
   font-weight: 500;
   color: #444;
+  padding: 0.5rem 1rem;
   transition: color 0.3s ease;
 }
-
 .nav-animate .nav-link:hover {
-  color: #6a4fbf;
+  color: #007bff;
 }
-
 .nav-animate .nav-link::after {
   content: "";
   position: absolute;
@@ -39,32 +42,34 @@
   bottom: -5px;
   width: 0%;
   height: 2px;
-  background: #6a4fbf;
+  background: #007bff;
   transition: width 0.3s ease;
 }
-
 .nav-animate .nav-link:hover::after {
   width: 100%;
 }
 
-/* Buttons animation */
+/* Buttons */
 .nav-btn {
+  font-weight: 500;
+  border-radius: 6px;
   transition: all 0.3s ease;
 }
-
 .nav-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(106, 79, 191, 0.3);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Dropdown styling */
+/* Dropdown */
 .dropdown-menu {
-  border-radius: 10px;
+  border-radius: 8px;
+  padding: 0.5rem 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  animation: fadeIn 0.3s ease;
 }
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(-5px);}
-  to {opacity: 1; transform: translateY(0);}
+.dropdown-item {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+}
+.dropdown-item:hover {
+  background-color: #f8f9fa;
 }

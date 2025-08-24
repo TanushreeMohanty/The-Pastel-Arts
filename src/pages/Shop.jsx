@@ -7,7 +7,7 @@ import "./Shop.css";
 const Shop = () => {
   const [qty, setQty] = useState(() =>
     products.reduce((acc, product) => {
-      acc[product.id] = 1; 
+      acc[product.id] = 1;
       return acc;
     }, {})
   );
@@ -23,30 +23,25 @@ const Shop = () => {
     }));
   };
 
-  // Fixed categories
   const categories = ["All", "Diary", "Pen", "Pencil"];
 
-  // Filtered products
   const filteredProducts =
     activeCategory === "All"
       ? products
       : products.filter(
-          (p) =>
-            p.category?.toLowerCase() === activeCategory.toLowerCase()
+          (p) => p.category?.toLowerCase() === activeCategory.toLowerCase()
         );
 
   return (
     <div className="shop-container">
-      <h2 className="shop-title">🌸 Shop Our Pastel Collection</h2>
+      <h2 className="shop-title">Shop Our Pastel Collection</h2>
 
       {/* Category Tabs */}
       <div className="category-tabs">
         {categories.map((cat) => (
           <button
             key={cat}
-            className={`tab-btn ${
-              activeCategory === cat ? "active" : ""
-            }`}
+            className={`tab-btn ${activeCategory === cat ? "active" : ""}`}
             onClick={() => setActiveCategory(cat)}
           >
             {cat}
@@ -54,6 +49,7 @@ const Shop = () => {
         ))}
       </div>
 
+      {/* Products Grid */}
       <div className="products-grid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
@@ -91,7 +87,7 @@ const Shop = () => {
                   className="add-cart-btn"
                   onClick={() => addToCart(product, qty[product.id])}
                 >
-                  Add to Cart 🛒
+                  Add to Cart
                 </button>
               </div>
             </div>

@@ -8,7 +8,7 @@ import Cart from "./pages/Cart";
 import AdminPage from "./pages/AdminPage";
 import { auth } from "./firebase";
 import { CartProvider } from "./context/CartContext";
-import { onAuthStateChanged } from "firebase/auth"; // ✅ import correctly
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,14 +22,14 @@ function App() {
   }, []);
 
   return (
-    <CartProvider user={user}>
+    <CartProvider>
       <BrowserRouter>
         <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/cart" element={<Cart user={user} />} />
-          <Route path="/checkout" element={<Checkout user={user} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>

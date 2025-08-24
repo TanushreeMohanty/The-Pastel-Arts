@@ -8,7 +8,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <h1>
-          Welcome to <span>The Pastel Arts 🎨</span>
+          Welcome to <span>The Pastel Arts</span>
         </h1>
         <p>Your one-stop shop for beautiful pastel artworks.</p>
         <Link to="/shop" className="explore-btn">
@@ -19,16 +19,16 @@ const Home = () => {
       {/* Features Section */}
       <section className="features">
         <div className="feature-card">
-          <h2>✨ Unique Art</h2>
-          <p>Handmade pastel artworks crafted with love and creativity.</p>
+          <h2>Unique Art</h2>
+          <p>Handmade pastel artworks crafted with care and creativity.</p>
         </div>
         <div className="feature-card">
-          <h2>🎁 Custom Orders</h2>
+          <h2>Custom Orders</h2>
           <p>Personalize your art piece for special occasions & memories.</p>
         </div>
         <div className="feature-card">
-          <h2>🚚 Worldwide Shipping</h2>
-          <p>Delivering pastel happiness to your doorstep, anywhere.</p>
+          <h2>Worldwide Shipping</h2>
+          <p>Delivering pastel artwork safely to your doorstep, anywhere.</p>
         </div>
       </section>
     </div>

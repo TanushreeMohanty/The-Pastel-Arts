@@ -1,9 +1,9 @@
 import React from "react";
 import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
+import "./Auth.css"; // Custom CSS for elegant styling
 
 const Auth = ({ user, setUser }) => {
-
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -19,14 +19,25 @@ const Auth = ({ user, setUser }) => {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       {user ? (
-        <div>
-          <span>Welcome, {user.displayName}</span>
-          <button onClick={handleLogout}>Logout</button>
+        <div className="auth-logged-in">
+          {user.photoURL && (
+            <img
+              src={user.photoURL}
+              alt="profile"
+              className="auth-profile-img"
+            />
+          )}
+          <span className="auth-welcome">Welcome, {user.displayName}</span>
+          <button className="auth-btn logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       ) : (
-        <button onClick={handleLogin}>Login with Google</button>
+        <button className="auth-btn login-btn" onClick={handleLogin}>
+          Login with Google
+        </button>
       )}
     </div>
   );
