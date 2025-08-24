@@ -5,11 +5,30 @@
   background: linear-gradient(135deg, #ffc5d0, #f7d6d0);
   min-height: 100vh;
   animation: fadeIn 0.8s ease;
+  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Headings */
+section h2 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #fb6090;
+  margin: 0.5rem auto;
+  border-radius: 2px;
 }
 
 /* Hero Section */
@@ -24,27 +43,33 @@
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  color: #821d30; /* deep rose red */
+  font-size: 2.8rem;
+  color: #821d30;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
 .hero h1 span {
-  color: #fb6090; /* hot pink */
+  color: #fb6090;
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: #333;
+  color: #444;
   margin: 1rem 0 2rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
-/* Explore Button */
-.explore-btn {
-  background-color: #fb6090; /* hot pink */
+/* Buttons */
+.explore-btn,
+.contact-btn {
+  background-color: #fb6090;
   color: #fff;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
@@ -55,62 +80,137 @@
   display: inline-block;
 }
 
-.explore-btn:hover {
-  background-color: #821d30; /* deep rose red */
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(130,29,48,0.3);
+.explore-btn:hover,
+.contact-btn:hover {
+  background-color: #821d30;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(130,29,48,0.25);
 }
 
 /* Features Section */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .feature-card {
-  background: #f7d6d0; /* soft pink accent */
-  padding: 1.5rem;
+  background: #fff;
+  padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeIn 0.8s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(130,29,48,0.2); /* soft rose shadow */
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(130,29,48,0.2);
 }
 
 .feature-card h2 {
-  color: #821d30; /* deep rose red */
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  color: #821d30;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
 }
 
 .feature-card p {
   color: #555;
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+/* About Section */
+.about {
+  margin: 5rem auto;
+  max-width: 850px;
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+}
+
+.about h2 {
+  color: #821d30;
+}
+
+.about p {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Testimonials Section */
+.testimonials {
+  margin: 5rem 0;
+}
+
+.testimonial-card {
+  max-width: 650px;
+  margin: 1.5rem auto;
+  background: #ffc5d0;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.02);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  color: #333;
+  line-height: 1.6;
+}
+
+.testimonial-card h4 {
+  margin-top: 1rem;
+  color: #821d30;
+  font-weight: 600;
+}
+
+/* CTA Section */
+.cta {
+  margin: 5rem auto;
+  padding: 3rem;
+  background: linear-gradient(135deg, #fb6090, #821d30);
+  color: #fff;
+  border-radius: 22px;
+  max-width: 850px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+  .about, .cta, .testimonial-card { padding: 2rem; }
+}
+
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 0.95rem; }
+  .features { gap: 1.5rem; }
+  .feature-card { padding: 1.5rem; }
+  .about h2, .testimonials h2, .cta h2 { font-size: 1.6rem; }
+}
 
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .features {
-    gap: 1rem;
-  }
-
-  .feature-card {
-    padding: 1rem;
-  }
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.5rem; }
+  .hero p { font-size: 0.9rem; }
+  .explore-btn, .contact-btn { padding: 12px 20px; font-size: 0.9rem; }
+  .feature-card h2 { font-size: 1.2rem; }
+  .feature-card p { font-size: 0.9rem; }
 }
