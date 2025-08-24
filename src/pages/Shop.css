@@ -4,7 +4,7 @@
 .shop-container {
   padding: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #fceff9, #f9f9ff);
+  background: linear-gradient(135deg, #ffc5d0, #f7d6d0);
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
@@ -13,7 +13,7 @@
 .shop-title {
   font-size: 2.3rem;
   font-weight: bold;
-  color: #874ccc;
+  color: #821d30; /* deep rose red */
   margin-bottom: 2rem;
   letter-spacing: 1px;
   animation: fadeInDown 0.6s ease;
@@ -39,7 +39,7 @@
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
   font-weight: 600;
-  color: #874ccc;
+  color: #821d30; /* deep rose red */
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -47,14 +47,14 @@
 }
 
 .tab-btn:hover {
-  background: #f2e1ff;
+  background: #f7d6d0;
   transform: scale(1.05);
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #874ccc, #c65bcf, #f27bbd);
+  background: linear-gradient(135deg, #821d30, #fb6090, #ffc5d0);
   color: white;
-  box-shadow: 0 6px 18px rgba(135, 76, 204, 0.4);
+  box-shadow: 0 6px 18px rgba(130,29,48,0.4);
   transform: scale(1.1);
 }
 
@@ -78,13 +78,12 @@
   backdrop-filter: blur(15px);
   position: relative;
   overflow: hidden;
-  z-index: 0; /* baseline */
-
+  z-index: 0;
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(130,29,48,0.25); /* subtle rose shadow */
 }
 
 /* Floating gradient on hover */
@@ -95,7 +94,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(#874ccc, #c65bcf, #f27bbd, #874ccc);
+  background: conic-gradient(#821d30, #fb6090, #ffc5d0, #821d30);
   transform: rotate(0deg);
   transition: opacity 0.4s;
   opacity: 0;
@@ -115,8 +114,7 @@
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  z-index: 0; /* image layer also behind text/buttons */
-
+  z-index: 0;
 }
 
 .product-img {
@@ -135,14 +133,14 @@
 .product-info {
   text-align: left;
   margin-top: 1rem;
-   position: relative;
+  position: relative;
   z-index: 2; 
 }
 
 .product-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #10439f;
+  color: #821d30; /* deep rose red */
 }
 
 .product-desc {
@@ -154,7 +152,7 @@
 .product-price {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #c65bcf;
+  color: #fb6090; /* hot pink */
   margin: 0.8rem 0;
 }
 
@@ -167,7 +165,7 @@
 }
 
 .qty-btn {
-  background: #f27bbd;
+  background: #fb6090; /* hot pink */
   color: white;
   border: none;
   padding: 0.45rem 0.9rem;
@@ -178,7 +176,7 @@
 }
 
 .qty-btn:hover {
-  background: #c65bcf;
+  background: #821d30;
   transform: scale(1.1);
 }
 
@@ -194,7 +192,7 @@
 .add-cart-btn {
   width: 100%;
   padding: 0.9rem;
-  background: linear-gradient(135deg, #874ccc, #c65bcf, #f27bbd);
+  background: linear-gradient(135deg, #821d30, #fb6090, #ffc5d0);
   color: white;
   border: none;
   border-radius: 14px;
@@ -205,7 +203,7 @@
 }
 
 .add-cart-btn:hover {
-  background: linear-gradient(135deg, #10439f, #874ccc);
+  background: linear-gradient(135deg, #fb6090, #821d30);
   transform: scale(1.05);
 }
 
@@ -243,5 +241,5 @@
 .add-cart-btn,
 .quantity-controls {
   position: relative;
-  z-index: 3; /* ✅ force buttons above image/overlay */
+  z-index: 3;
 }

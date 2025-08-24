@@ -2,7 +2,7 @@
   font-family: "Poppins", sans-serif;
   padding: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #fceff9, #f9f9ff);
+  background: linear-gradient(135deg, #ffc5d0, #f7d6d0);
   min-height: 100vh;
   animation: fadeIn 0.8s ease;
 }
@@ -25,13 +25,13 @@
 
 .hero h1 {
   font-size: 2.5rem;
-  color: #874CCC;
+  color: #821d30; /* deep rose red */
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hero h1 span {
-  color: #C65BCF;
+  color: #fb6090; /* hot pink */
 }
 
 .hero p {
@@ -42,7 +42,7 @@
 
 /* Explore Button */
 .explore-btn {
-  background-color: #874CCC;
+  background-color: #fb6090; /* hot pink */
   color: #fff;
   padding: 12px 24px;
   border: none;
@@ -51,14 +51,14 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none; /* remove underline */
+  text-decoration: none;
   display: inline-block;
 }
 
 .explore-btn:hover {
-  background-color: #C65BCF;
+  background-color: #821d30; /* deep rose red */
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(198, 91, 207, 0.3);
+  box-shadow: 0 8px 20px rgba(130,29,48,0.3);
 }
 
 /* Features Section */
@@ -70,7 +70,7 @@
 }
 
 .feature-card {
-  background: white;
+  background: #f7d6d0; /* soft pink accent */
   padding: 1.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -80,11 +80,11 @@
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(135, 76, 204, 0.2);
+  box-shadow: 0 12px 28px rgba(130,29,48,0.2); /* soft rose shadow */
 }
 
 .feature-card h2 {
-  color: #10439F;
+  color: #821d30; /* deep rose red */
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
   font-weight: 600;

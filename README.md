@@ -84,3 +84,5 @@ Perfect! We can integrate **Google login/signup using Firebase Authentication**.
 * Cart & Checkout
 
 Do you want me to create that code?
+
+color palette: #ffc5d0, #f7d6d0, #fb6090, #821d30 

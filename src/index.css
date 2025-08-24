@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #fff0f5; /* Light pastel pink */
+  background-color: #ffc5d0; /* Main pastel pink */
   color: #333;
 }
 
@@ -21,7 +21,7 @@ button {
 /* Navbar                        */
 /* ============================= */
 .navbar {
-  background-color: #F27BBD !important;
+  background-color: #fb6090 !important; /* Hot Pink */
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -31,27 +31,27 @@ button {
 }
 
 .nav-link:hover {
-  color: #fff0f5 !important;
+  color: #f7d6d0 !important; /* Scallop Seashell */
 }
 
 /* ============================= */
 /* Buttons                        */
 /* ============================= */
 .btn-primary {
-  background-color: #874CCC;
-  border-color: #874CCC;
+  background-color: #821d30; /* Rose Red */
+  border-color: #821d30;
   transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background-color: #C65BCF;
-  border-color: #C65BCF;
+  background-color: #fb6090;
+  border-color: #fb6090;
   transform: scale(1.05);
 }
 
 /* Generic Gradient Button */
 .gradient-btn {
-  background: linear-gradient(135deg, #874CCC, #C65BCF, #F27BBD);
+  background: linear-gradient(135deg, #821d30, #fb6090, #ffc5d0);
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -62,7 +62,7 @@ button {
 }
 
 .gradient-btn:hover {
-  background: linear-gradient(135deg, #10439F, #874CCC);
+  background: linear-gradient(135deg, #fb6090, #821d30);
   transform: scale(1.05);
 }
 
@@ -77,7 +77,7 @@ button {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(135,76,204,0.15);
+  box-shadow: 0 12px 30px rgba(130,29,48,0.15); /* Rose Red shadow */
 }
 
 .card-img-top {
@@ -98,13 +98,13 @@ button {
 
 .hero h1 {
   font-size: 2.5rem;
-  color: #874CCC;
+  color: #821d30; /* Rose Red */
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hero h1 span {
-  color: #C65BCF;
+  color: #fb6090; /* Hot Pink */
 }
 
 .hero p {
@@ -113,7 +113,7 @@ button {
 }
 
 .explore-btn {
-  background-color: #874CCC;
+  background-color: #821d30;
   color: #fff;
   padding: 12px 24px;
   border-radius: 30px;
@@ -125,9 +125,9 @@ button {
 }
 
 .explore-btn:hover {
-  background-color: #C65BCF;
+  background-color: #fb6090;
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(198,91,207,0.3);
+  box-shadow: 0 8px 20px rgba(251,96,144,0.3);
 }
 
 .features {
@@ -138,7 +138,7 @@ button {
 }
 
 .feature-card {
-  background: white;
+  background: #f7d6d0; /* Scallop Seashell */
   padding: 1.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -147,11 +147,11 @@ button {
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(135, 76, 204, 0.2);
+  box-shadow: 0 12px 28px rgba(130,29,48,0.2);
 }
 
 .feature-card h2 {
-  color: #10439F;
+  color: #821d30;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }
@@ -171,7 +171,7 @@ button {
 .shop-title {
   font-size: 2.3rem;
   font-weight: bold;
-  color: #874CCC;
+  color: #821d30;
   margin-bottom: 2rem;
   letter-spacing: 1px;
 }
@@ -190,21 +190,21 @@ button {
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
   font-weight: 600;
-  color: #874CCC;
+  color: #821d30;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
 .tab-btn:hover {
-  background: #f2e1ff;
+  background: #f7d6d0;
   transform: scale(1.05);
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #874CCC, #C65BCF, #F27BBD);
+  background: linear-gradient(135deg, #821d30, #fb6090, #ffc5d0);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(135, 76, 204, 0.4);
+  box-shadow: 0 6px 18px rgba(130,29,48,0.4);
   transform: scale(1.1);
 }
 
@@ -258,7 +258,7 @@ button {
 .product-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #10439F;
+  color: #821d30;
 }
 
 .product-desc {
@@ -270,7 +270,7 @@ button {
 .product-price {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #C65BCF;
+  color: #fb6090;
   margin: 0.8rem 0;
 }
 
@@ -282,7 +282,7 @@ button {
 }
 
 .qty-btn {
-  background: #F27BBD;
+  background: #fb6090;
   color: white;
   border: none;
   padding: 0.45rem 0.9rem;
@@ -292,7 +292,7 @@ button {
 }
 
 .qty-btn:hover {
-  background: #C65BCF;
+  background: #821d30;
   transform: scale(1.1);
 }
 
@@ -305,7 +305,7 @@ button {
 .add-cart-btn {
   width: 100%;
   padding: 0.9rem;
-  background: linear-gradient(135deg, #874CCC, #C65BCF, #F27BBD);
+  background: linear-gradient(135deg, #821d30, #fb6090, #ffc5d0);
   color: white;
   border: none;
   border-radius: 14px;
@@ -316,7 +316,7 @@ button {
 }
 
 .add-cart-btn:hover {
-  background: linear-gradient(135deg, #10439F, #874CCC);
+  background: linear-gradient(135deg, #fb6090, #821d30);
   transform: scale(1.05);
 }
 
@@ -327,14 +327,14 @@ button {
   max-width: 900px;
   margin: 2rem auto;
   padding: 20px;
-  background: #fff;
+  background: #f7d6d0;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .cart-container h2 {
   text-align: center;
-  color: #333;
+  color: #821d30;
   margin-bottom: 20px;
 }
 
@@ -346,7 +346,7 @@ button {
 .cart-item {
   display: flex;
   align-items: center;
-  background: #f9f9f9;
+  background: #ffc5d0;
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 10px;
@@ -365,7 +365,7 @@ button {
 }
 
 .cart-actions button {
-  background: #874CCC;
+  background: #821d30;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -375,11 +375,11 @@ button {
 }
 
 .cart-actions button:hover {
-  background: #C65BCF;
+  background: #fb6090;
 }
 
 .remove-btn {
-  background: #F27BBD;
+  background: #fb6090;
   color: #fff;
   padding: 6px 12px;
   border: none;
@@ -388,7 +388,7 @@ button {
 }
 
 .remove-btn:hover {
-  background: #e14ba8;
+  background: #821d30;
 }
 
 /* ============================= */
@@ -399,14 +399,14 @@ button {
   max-width: 600px;
   margin: 2rem auto;
   padding: 20px;
-  background: #fff0f5;
+  background: #f7d6d0;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .checkout-container h2 {
   text-align: center;
-  color: #874CCC;
+  color: #821d30;
   margin-bottom: 20px;
 }
 

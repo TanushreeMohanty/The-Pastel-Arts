@@ -1,7 +1,7 @@
 /* Navbar base */
 .custom-navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #eee;
+  background-color: #f7d6d0; /* soft pastel background */
+  border-bottom: 1px solid #ffc5d0; /* light divider */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -17,23 +17,23 @@
 }
 .brand-text {
   font-size: 1.3rem;
-  color: #222;
+  color: #821d30; /* deep rose red */
   transition: color 0.3s ease;
 }
 .brand-text:hover {
-  color: #007bff;
+  color: #fb6090; /* hot pink hover */
 }
 
 /* Links */
 .nav-animate .nav-link {
   position: relative;
   font-weight: 500;
-  color: #444;
+  color: #821d30; /* deep rose */
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
 }
 .nav-animate .nav-link:hover {
-  color: #007bff;
+  color: #fb6090; /* hot pink on hover */
 }
 .nav-animate .nav-link::after {
   content: "";
@@ -42,7 +42,7 @@
   bottom: -5px;
   width: 0%;
   height: 2px;
-  background: #007bff;
+  background: #fb6090; /* underline effect */
   transition: width 0.3s ease;
 }
 .nav-animate .nav-link:hover::after {
@@ -54,10 +54,15 @@
   font-weight: 500;
   border-radius: 6px;
   transition: all 0.3s ease;
+  background-color: #fb6090; /* hot pink button */
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
 }
 .nav-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(251, 96, 144, 0.2); /* hot pink shadow */
+  background-color: #821d30; /* deep rose hover */
 }
 
 /* Dropdown */
@@ -65,11 +70,15 @@
   border-radius: 8px;
   padding: 0.5rem 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background-color: #ffc5d0; /* light card background */
 }
 .dropdown-item {
   font-size: 0.95rem;
   padding: 0.5rem 1rem;
+  color: #821d30; /* deep rose text */
+  transition: all 0.3s ease;
 }
 .dropdown-item:hover {
-  background-color: #f8f9fa;
+  background-color: #fb6090; /* hot pink highlight */
+  color: #fff;
 }
