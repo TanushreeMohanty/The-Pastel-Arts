@@ -1,222 +1,246 @@
 @import '../variables.css';
-
 /* ============================= */
-/* Home Container               */
-/* ============================= */
-.home-container {
+/* Base */
+.home {
   font-family: "Poppins", sans-serif;
-  padding: 2rem;
-  text-align: center;
-  background-color: var(--color-bg);
-  min-height: 100vh;
-  animation: fadeIn 0.8s ease;
   overflow-x: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Section Headings */
-section h2 {
+/* Headings */
+.section-title {
   font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 1rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 1.2rem;
   position: relative;
 }
 
-section h2::after {
+.section-title::after {
   content: "";
   display: block;
   width: 60px;
   height: 4px;
   background: var(--color-primary);
-  margin: 0.5rem auto;
-  border-radius: 2px;
+  margin: 0.6rem auto;
+  border-radius: 3px;
 }
 
+/* ============================= */
 /* Hero Section */
 .hero {
-  margin-bottom: 3rem;
-  animation: fadeInDown 0.8s ease;
+  height: 80vh;
+  background: url("/images/hero-bg.jpg") center/cover no-repeat;
+  position: relative;
+  border-radius: 18px;
+  color: #fff;
+  margin: 1rem;
+  overflow: hidden;
 }
 
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: auto;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
-  color: var(--color-primary);
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.hero h1 span {
-  color: var(--color-secondary);
+  color: #fb6090;
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: var(--color-text);
-  margin: 1rem 0 2rem;
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  margin-top: 1rem;
 }
 
-/* Buttons */
-.explore-btn,
-.contact-btn {
-  background-color: var(--color-secondary);
-  color: #fff;
-  padding: 14px 28px;
+.hero-btn {
+  margin-top: 1.5rem;
+  background: var(--color-primary);
   border: none;
   border-radius: 30px;
-  font-size: 1rem;
+  padding: 12px 28px;
   font-weight: 600;
-  cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
+  color: #fff;
 }
 
-.explore-btn:hover,
-.contact-btn:hover {
-  background-color: var(--color-primary);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 18px rgba(130,29,48,0.25);
+.hero-btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* Features Section */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+/* ============================= */
+/* Categories */
+.categories {
+  margin-top: 4rem;
 }
 
-.feature-card {
-  background: var(--color-card-bg);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(130,29,48,0.15);
-}
-
-.feature-card h2 {
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
-  font-size: 1.4rem;
-}
-
-.feature-card p {
-  color: var(--color-text);
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* About Section */
-.about {
-  margin: 5rem auto;
-  max-width: 850px;
-  background: var(--color-card-bg);
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
-}
-
-.about h2 {
-  color: var(--color-primary);
-}
-
-.about p {
-  color: var(--color-text);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-/* Testimonials Section */
-.testimonials {
-  margin: 5rem 0;
-}
-
-.testimonial-card {
-  max-width: 650px;
-  margin: 1.5rem auto;
-  background: var(--color-bg-light);
-  padding: 2rem;
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+.category-card {
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
-.testimonial-card:hover {
-  transform: scale(1.02);
+.category-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial-card p {
-  font-style: italic;
-  color: var(--color-text);
-  line-height: 1.6;
-}
-
-.testimonial-card h4 {
-  margin-top: 1rem;
-  color: var(--color-primary);
+.category-card p {
+  margin-top: 0.75rem;
   font-weight: 600;
+  color: var(--color-primary);
 }
 
-/* CTA Section */
-.cta {
-  margin: 5rem auto;
-  padding: 3rem;
-  background-color: var(--color-primary);
+.category-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ============================= */
+/* Featured Products */
+.product-card {
+  border: none;
+  border-radius: 16px;
+  background: var(--color-card-bg);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card img {
+  border-radius: 16px 16px 0 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.product-card .btn {
+  background: var(--color-primary);
+  border: none;
+  border-radius: 20px;
   color: #fff;
-  border-radius: 22px;
-  max-width: 850px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
-.cta h2 {
-  font-size: 2rem;
+.product-card .btn:hover {
+  background: var(--color-accent);
+}
+
+/* ============================= */
+/* Offers */
+.offers {
+  background: var(--color-secondary);
+  color: #fff;
+  padding: 3rem 1rem;
+  border-radius: 20px;
+  margin-top: 5rem;
+}
+
+.offers h2 {
+  color: #fff;
   margin-bottom: 1rem;
 }
 
-.cta p {
-  font-size: 1.05rem;
-  margin-bottom: 1.5rem;
+.offers .btn {
+  margin-top: 1rem;
+  border-radius: 25px;
+  padding: 10px 24px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--color-secondary);
+  border: none;
+}
+
+.offers .btn:hover {
+  background: var(--color-btn-hover);
+  color: #fff;
+}
+
+/* ============================= */
+/* Why Choose Us */
+.why-choose i {
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.why-choose h5 {
+  margin-top: 10px;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.why-choose p {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+}
+
+/* ============================= */
+/* What We Offer */
+.what-we-offer img {
+  width: 100%;
+  height: 200px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.what-we-offer h5 {
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* Feedback */
+.feedback {
+  margin: 5rem auto;
+}
+
+.feedback p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.feedback h6 {
+  margin-top: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
 }
 
 /* ============================= */
 /* Responsive */
 @media (max-width: 992px) {
-  .hero h1 { font-size: 2.2rem; }
+  .hero h1 { font-size: 2.3rem; }
   .hero p { font-size: 1rem; }
-  .about, .cta, .testimonial-card { padding: 2rem; }
 }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 1.8rem; }
+  .hero h1 { font-size: 1.9rem; }
   .hero p { font-size: 0.95rem; }
-  .features { gap: 1.5rem; }
-  .feature-card { padding: 1.5rem; }
-  .about h2, .testimonials h2, .cta h2 { font-size: 1.6rem; }
+  .category-card img { width: 100px; height: 100px; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.6rem; }
   .hero p { font-size: 0.9rem; }
-  .explore-btn, .contact-btn { padding: 12px 20px; font-size: 0.9rem; }
-  .feature-card h2 { font-size: 1.2rem; }
-  .feature-card p { font-size: 0.9rem; }
+  .hero-btn { padding: 10px 20px; font-size: 0.9rem; }
+  .category-card img { width: 85px; height: 85px; }
 }
