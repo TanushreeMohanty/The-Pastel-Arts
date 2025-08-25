@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Logo / Brand */}
+        {/* Brand / Logo */}
         <div className="footer-brand">
           <h2>The Pastel Arts</h2>
-          <p>Your favorite artwork, anytime.</p>
+          <p>Your favorite artwork and stationery, anytime.</p>
         </div>
 
         {/* Quick Links */}
@@ -19,6 +19,7 @@ const Footer = () => {
             <li><a href="/shop">Shop</a></li>
             <li><a href="/cart">Cart</a></li>
             <li><a href="/about">About Us</a></li>
+            <li><a href="/blog">Blog</a></li>
           </ul>
         </div>
 
@@ -30,16 +31,40 @@ const Footer = () => {
             <li><a href="/contact">Contact</a></li>
             <li><a href="/returns">Returns</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms & Conditions</a></li>
           </ul>
+        </div>
+
+        {/* Newsletter */}
+        <div className="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>Get updates on new products, offers, and creative tips.</p>
+          <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
 
         {/* Social Media */}
         <div className="footer-social">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-youtube"></i>
+            </a>
           </div>
         </div>
       </div>

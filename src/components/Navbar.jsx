@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useCart } from "../context/CartContext";
-import "./Navbar.css"; // custom styles
+import "./Navbar.css";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
   const { cartCount } = useCart();
+  const [scrolled, setScrolled] = useState(false);
+
+  // Scroll shadow effect
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -27,12 +35,19 @@ const Navbar = ({ user, setUser }) => {
   const isAdmin = user?.email === "admin@example.com";
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light shadow-sm custom-navbar fixed-top">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light shadow-sm custom-navbar ${
+        scrolled ? "scrolled" : ""
+      } fixed-top`}
+    >
       <div className="container">
-        {/* Brand with Logo */}
+        {/* Brand */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img src="/logo.png" alt="Logo" className="brand-logo me-2" />
-          <span className="fw-bold brand-text">The Pastel Arts</span>
+          <div className="d-flex flex-column">
+            <span className="fw-bold brand-text">The Pastel Arts</span>
+            <small className="text-muted tagline">Creativity Delivered</small>
+          </div>
         </Link>
 
         {/* Toggle button */}
@@ -49,10 +64,7 @@ const Navbar = ({ user, setUser }) => {
         </button>
 
         {/* Nav items */}
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav align-items-center nav-animate">
             <li className="nav-item">
               <Link className="nav-link" to="/">
@@ -65,6 +77,16 @@ const Navbar = ({ user, setUser }) => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/blog">
+                <i className="bi bi-journal-text me-1"></i> Blog
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/offers">
+                <i className="bi bi-star me-1"></i> Offers
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/about">
                 <i className="bi bi-info-circle me-1"></i> About Us
               </Link>
@@ -74,10 +96,11 @@ const Navbar = ({ user, setUser }) => {
                 <i className="bi bi-envelope me-1"></i> Contact Us
               </Link>
             </li>
+
             {isAdmin && (
               <li className="nav-item">
                 <Link className="nav-link" to="/admin">
-                  <i className="bi bi-speedometer2 me-1"></i> Admin
+                  <i className="bi bi-speedometer2 me-1"></i> Dashboard
                 </Link>
               </li>
             )}
@@ -119,6 +142,11 @@ const Navbar = ({ user, setUser }) => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end">
                   <li>
+                    <Link className="dropdown-item" to="/orders">
+                      <i className="bi bi-bag-check me-2"></i> My Orders
+                    </Link>
+                  </li>
+                  <li>
                     <button className="dropdown-item" onClick={handleLogout}>
                       <i className="bi bi-box-arrow-right me-2"></i> Logout
                     </button>
@@ -127,10 +155,7 @@ const Navbar = ({ user, setUser }) => {
               </li>
             ) : (
               <li className="nav-item">
-                <button
-                  className="btn btn-outline-primary nav-btn"
-                  onClick={handleLogin}
-                >
+                <button className="btn btn-outline-primary nav-btn" onClick={handleLogin}>
                   <i className="bi bi-person-circle me-1"></i> Login / Signup
                 </button>
               </li>

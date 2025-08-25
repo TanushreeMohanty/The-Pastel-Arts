@@ -1,9 +1,15 @@
-/* Navbar base */
+/* Navbar Base */
 .custom-navbar {
-  background-color: #f7d6d0; /* soft pastel pink */
-  border-bottom: 1px solid #ffc5d0; /* subtle divider */
+  background-color: #f7d6d0;
+  border-bottom: 1px solid #ffc5d0;
   font-family: "Poppins", sans-serif;
   padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Sticky shadow on scroll */
+.navbar.scrolled {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
 /* Brand */
@@ -18,24 +24,28 @@
 }
 .brand-text {
   font-size: 1.3rem;
-  color: #821d30; /* deep rose red */
+  color: #821d30;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 .brand-text:hover {
-  color: #fb6090; /* hot pink on hover */
+  color: #fb6090;
+}
+.tagline {
+  font-size: 0.7rem;
+  color: #b56c7f;
 }
 
 /* Nav Links */
 .nav-animate .nav-link {
   position: relative;
   font-weight: 500;
-  color: #821d30; /* deep rose */
+  color: #821d30;
   padding: 0.5rem 0.8rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 .nav-animate .nav-link:hover {
-  color: #fb6090; /* hot pink on hover */
+  color: #fb6090;
 }
 .nav-animate .nav-link::after {
   content: "";
@@ -44,7 +54,7 @@
   bottom: -4px;
   width: 0%;
   height: 2px;
-  background: #fb6090; /* underline effect */
+  background: linear-gradient(90deg, #874CCC, #C65BCF, #F27BBD);
   transition: width 0.3s ease;
 }
 .nav-animate .nav-link:hover::after {
@@ -56,7 +66,7 @@
   font-weight: 500;
   border-radius: 8px;
   transition: all 0.3s ease;
-  background-color: #fb6090; /* hot pink */
+  background-color: #fb6090;
   color: #fff;
   border: none;
   padding: 0.4rem 1rem;
@@ -64,7 +74,7 @@
 .nav-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(251, 96, 144, 0.2);
-  background-color: #821d30; /* deep rose hover */
+  background: linear-gradient(135deg, #874CCC, #C65BCF, #F27BBD);
 }
 
 /* Cart Badge */
@@ -82,26 +92,25 @@
   border-radius: 10px;
   padding: 0.5rem 0;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  background-color: #fff0f5; /* soft pastel */
+  background-color: #fff0f5;
 }
 .dropdown-item {
   font-size: 0.95rem;
   padding: 0.5rem 1rem;
-  color: #821d30; /* deep rose */
+  color: #821d30;
   transition: all 0.3s ease;
   border-radius: 6px;
 }
 .dropdown-item:hover {
-  background-color: #fb6090; /* hot pink */
+  background-color: #fb6090;
   color: #fff;
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
   .nav-animate .nav-link {
     padding: 0.5rem 0;
   }
-
   .nav-btn {
     margin-top: 0.5rem;
   }
